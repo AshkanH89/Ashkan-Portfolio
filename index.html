@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashkan Hatami — Video &amp; Digital Media Specialist</title>
+<style>
+  :root{
+    --bg:#0E0D0C;
+    --bg-soft:#16140F;
+    --film:#1C1A16;
+    --rule:#36322A;
+    --amber:#E8A33D;
+    --amber-dim:#9C6E2B;
+    --cream:#EDE6D6;
+    --grey:#8C8779;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Iowan Old Style','Georgia',serif;
+    line-height:1.55;
+  }
+  .sprockets{
+    height:14px;
+    background-image:repeating-linear-gradient(90deg,var(--rule) 0 6px,transparent 6px 18px);
+    background-position:center;
+    background-repeat:repeat-x;
+    background-size:18px 6px;
+    opacity:.5;
+  }
+  header{
+    padding:7vh 6vw 6vh;
+    border-bottom:1px solid var(--rule);
+  }
+  .eyebrow{
+    font-family:'Courier New',monospace;
+    color:var(--amber);
+    font-size:.8rem;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    margin-bottom:1.2rem;
+  }
+  h1{
+    font-size:clamp(2.6rem,7vw,5.2rem);
+    font-weight:400;
+    letter-spacing:-.01em;
+    color:var(--cream);
+  }
+  h1 span{color:var(--amber);font-style:italic;}
+  .role{
+    margin-top:1rem;
+    font-size:clamp(1.5rem,3vw,2.2rem);
+    color:var(--cream);
+    font-weight:400;
+    letter-spacing:.01em;
+  }
+  .role-sub{
+    margin-top:.45rem;
+    font-family:'Courier New',monospace;
+    font-size:clamp(.8rem,1.3vw,.95rem);
+    color:var(--amber);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .location{
+    margin-top:.5rem;
+    font-size:.95rem;
+    color:var(--grey);
+    font-style:italic;
+  }
+  .contact{
+    margin-top:2.2rem;
+    font-family:'Courier New',monospace;
+    font-size:.85rem;
+    color:var(--grey);
+    display:flex;
+    flex-wrap:wrap;
+    gap:.4rem 1.5rem;
+  }
+  .contact a{color:var(--cream);text-decoration:none;border-bottom:1px solid var(--amber-dim);}
+  .contact a:hover{color:var(--amber);}
+
+  nav{
+    padding:1.1rem 6vw;
+    display:flex;
+    gap:1.6rem;
+    flex-wrap:wrap;
+    font-family:'Courier New',monospace;
+    font-size:.75rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--grey);
+    border-bottom:1px solid var(--rule);
+    position:sticky;
+    top:0;
+    background:rgba(14,13,12,.94);
+    backdrop-filter:blur(6px);
+    z-index:10;
+  }
+  nav a{color:inherit;text-decoration:none;}
+  nav a:hover{color:var(--amber);}
+
+  main{padding:0 6vw;}
+  section{padding:6vh 0;border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:1rem;
+    margin-bottom:2.4rem;
+  }
+  .frame-no{
+    font-family:'Courier New',monospace;
+    color:var(--amber-dim);
+    font-size:.85rem;
+  }
+  .section-head h2{
+    font-size:clamp(1.5rem,3.2vw,2.2rem);
+    font-weight:400;
+    color:var(--cream);
+  }
+  .section-note{
+    color:var(--grey);
+    font-size:.95rem;
+    max-width:68ch;
+    margin-top:-1.5rem;
+    margin-bottom:2.4rem;
+  }
+
+  /* SHOWREEL */
+  .showreel-wrap{
+    position:relative;
+    background:var(--film);
+    border:1px solid var(--rule);
+    padding:3.5rem 2.5rem;
+    text-align:center;
+  }
+  .showreel-link{text-decoration:none;display:block;}
+  .showreel-placeholder{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.4rem;
+  }
+  .play-ring{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    border:2px solid var(--amber);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2rem;
+    color:var(--amber);
+    transition:background .2s,color .2s;
+  }
+  .showreel-link:hover .play-ring{background:var(--amber);color:var(--bg);}
+  .reel-label{
+    font-family:'Courier New',monospace;
+    font-size:.75rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--amber);
+  }
+  .reel-note{
+    font-size:.9rem;
+    color:var(--grey);
+    font-style:italic;
+    max-width:52ch;
+    margin:0 auto;
+  }
+  .showreel-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    font-family:'Courier New',monospace;
+    font-size:.75rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--amber);
+    border:1px solid var(--amber-dim);
+    padding:.55rem 1rem;
+  }
+
+  /* ABOUT */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1.6fr;
+    gap:4rem;
+  }
+  .about-grid p{color:var(--grey);font-size:1.02rem;max-width:62ch;}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem;}
+  .stat .n{font-size:2.1rem;color:var(--amber);font-family:'Courier New',monospace;}
+  .stat .l{font-size:.78rem;color:var(--grey);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem;}
+
+  /* PROJECT GRID */
+  .reel-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(285px,1fr));
+    gap:0;
+    border-top:1px solid var(--rule);
+    border-left:1px solid var(--rule);
+  }
+  .frame{
+    border-right:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:1.8rem 1.6rem;
+    transition:background .25s ease;
+    display:flex;
+    flex-direction:column;
+  }
+  .frame:hover{background:var(--film);}
+  .frame .tc{
+    font-family:'Courier New',monospace;
+    font-size:.7rem;
+    color:var(--amber-dim);
+    margin-bottom:.7rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .frame h3{
+    font-size:1.15rem;
+    font-weight:400;
+    color:var(--cream);
+    margin-bottom:.6rem;
+  }
+  .frame p{color:var(--grey);font-size:.92rem;margin-bottom:1rem;}
+  .frame .meta{
+    font-family:'Courier New',monospace;
+    font-size:.7rem;
+    color:var(--grey);
+    display:block;
+    margin-top:auto;
+    margin-bottom:1rem;
+  }
+  .watch{
+    display:inline-flex;
+    align-items:center;
+    align-self:flex-start;
+    gap:.5rem;
+    font-family:'Courier New',monospace;
+    font-size:.75rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--amber);
+    text-decoration:none;
+    border:1px solid var(--amber-dim);
+    padding:.5rem .9rem;
+  }
+  .watch:hover{background:var(--amber);color:var(--bg);border-color:var(--amber);}
+  .watch:before{content:"▶";font-size:.65rem;}
+  .award-badge{
+    display:inline-block;
+    margin-bottom:.7rem;
+    font-family:'Courier New',monospace;
+    font-size:.66rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--amber);
+    border:1px solid var(--amber-dim);
+    padding:.25rem .55rem;
+    align-self:flex-start;
+  }
+
+  /* SKILLS */
+  .skills-cols{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:2.4rem;
+  }
+  .skills-cols h4{
+    font-family:'Courier New',monospace;
+    font-size:.75rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:var(--amber);
+    margin-bottom:1rem;
+  }
+  .skills-cols ul{list-style:none;}
+  .skills-cols li{
+    color:var(--grey);
+    font-size:.95rem;
+    padding:.35rem 0;
+    border-bottom:1px solid var(--rule);
+  }
+
+  footer{padding:6vh 6vw 5vh;text-align:center;}
+  footer .contact{justify-content:center;margin-top:1.5rem;}
+  .copyright{
+    margin-top:3rem;
+    font-family:'Courier New',monospace;
+    font-size:.7rem;
+    color:var(--rule);
+  }
+
+  @media(max-width:760px){
+    .about-grid{grid-template-columns:1fr;gap:2rem;}
+    nav{gap:1.05rem;}
+    .showreel-wrap{padding:2.5rem 1.2rem;}
+    .role-sub{line-height:1.6;}
+  }
+</style>
+</head>
+<body>
+
+<div class="sprockets"></div>
+<header>
+  <div class="eyebrow">Showreel &amp; Selected Works</div>
+  <h1>Ashkan <span>Hatami</span></h1>
+  <div class="role">Video &amp; Digital Media Specialist</div>
+  <div class="role-sub">Videography · Video Editing · Photography · Content Production</div>
+  <div class="location">Berlin, Germany</div>
+  <div class="contact">
+    <a href="mailto:ashkan.hatami.ad@gmail.com">ashkan.hatami.ad@gmail.com</a>
+    <a href="tel:+4917683240220">+49 176 8324 0220</a>
+  </div>
+</header>
+<div class="sprockets"></div>
+
+<nav>
+  <a href="#showreel">Showreel</a>
+  <a href="#about">About</a>
+  <a href="#institutional">Image Films</a>
+  <a href="#documentary">Documentary</a>
+  <a href="#events">Events</a>
+  <a href="#digital">Digital</a>
+  <a href="#branded">Branded</a>
+  <a href="#skills">Skills</a>
+</nav>
+
+<main>
+
+  <section id="showreel">
+    <div class="section-head"><span class="frame-no">000</span><h2>Showreel</h2></div>
+    <div class="showreel-wrap">
+      <a class="showreel-link" href="https://1drv.ms/v/c/ef4f54239c16be36/IQAzuflz4QUrSI7D9TPpDDUlAcq14MSn3ZUD1E0137OSQ18?e=hgyN8R" target="_blank" rel="noopener">
+        <div class="showreel-placeholder">
+          <div class="play-ring">▶</div>
+          <div class="reel-label">Ashkan Hatami — Demo Reel 2026</div>
+          <p class="reel-note">A curated highlight reel spanning institutional film, documentary, event coverage, branded content, music video, and social-first production.</p>
+          <span class="showreel-cta">Watch Showreel</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head"><span class="frame-no">001</span><h2>About</h2></div>
+    <div class="about-grid">
+      <p>Video and digital media specialist with 10+ years of experience across television, documentary, institutional film, events, branded content, and social media. Work spans full-cycle production — concept, direction, camera, editing, color grading, and sound — with experience working independently and leading small production teams.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">10+</div><div class="l">Years in production</div></div>
+        <div class="stat"><div class="n">15</div><div class="l">Selected productions</div></div>
+        <div class="stat"><div class="n">1</div><div class="l">Best Film Award</div></div>
+        <div class="stat"><div class="n">B2</div><div class="l">German &amp; English</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="institutional">
+    <div class="section-head"><span class="frame-no">002</span><h2>Image Films &amp; Institutional</h2></div>
+    <p class="section-note">Institutional storytelling, university and healthcare communication, facility introductions, and anniversary films.</p>
+    <div class="reel-grid">
+      <div class="frame">
+        <div class="tc">Image Film</div>
+        <h3>ISMST Congress Image Film</h3>
+        <p>Produced for the 2025 ISMST Congress in Bogotá, Colombia, to support Berlin’s presentation at the event; full self-production from concept through final color grading.</p>
+        <span class="meta">ROLE — Concept · Direction · Editing · Color Grading</span>
+        <a class="watch" href="https://1drv.ms/v/c/5fc46a9fe5ba49d7/IQCgM2QS7NoqSovbm5Od474FAfLwAixLlC7UxaTjUF6zryw?e=qmnuKy" target="_blank" rel="noopener">Watch</a>
+      </div>
+      <div class="frame">
+        <div class="tc">Image Film</div>
+        <h3>Kermanshah University of Medical Sciences (KUMS)</h3>
+        <p>Commissioned to present the university to prospective international students as a modern, academically strong institution.</p>
+        <span class="meta">ROLE — Concept · Direction · Editing · Sound</span>
+        <a class="watch" href="https://1drv.ms/v/c/5fc46a9fe5ba49d7/IQDXSbrln2rEIIBfG68AAAAAASQ9FpdLiMsUKgF8yqyezuo?e=6lLOYa" target="_blank" rel="noopener">Watch</a>
+      </div>
+      <div class="frame">
+        <div class="tc">Documentary / Anniversary Film</div>
+        <h3>50 Years of Surgery at KUMS</h3>
+        <p>Documentary marking 50 years of surgery at KUMS, combining surgeon interviews, archival and clinical footage, and music-driven sequences to highlight the department’s history and development.</p>
+        <span class="meta">ROLE — Concept · Camera · Direction · Editing</span>
+        <a class="watch" href="https://1drv.ms/v/c/5fc46a9fe5ba49d7/IQDXSbrln2rEIIBfGa8AAAAAAaK5LgU7lT0CNQCS3wK3jdo?e=BfoFbU" target="_blank" rel="noopener">Watch</a>
+      </div>
+      <div class="frame">
+        <div class="tc">Image Film / Teaser</div>
+        <h3>Pharmaceutical Cleanroom — Facility Introduction</h3>
+        <p>Short facility teaser combining an expert-led introduction to the cleanroom with cinematic musical sequences showcasing the space and equipment.</p>
+        <span class="meta">ROLE — Concept · Camera · Direction · Editing</span>
+        <a class="watch" href="https://1drv.ms/v/c/ef4f54239c16be36/IQCmdZBmR8dESr318U3ZIulYAdHmAWM4pC9iFdk65ksllvA?e=GQg9xW" target="_blank" rel="noopener">Watch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="documentary">
+    <div class="section-head"><span class="frame-no">003</span><h2>Documentary &amp; Reportage</h2></div>
+    <p class="section-note">Long-form and reportage work built around interviews, observational footage, structured storytelling, and editorial pacing.</p>
+    <div class="reel-grid">
+      <div class="frame">
+        <div class="tc">Event Report / Documentary</div>
+        <h3>ILA Berlin — Aviation &amp; Defence Event Reportage</h3>
+        <p>Reportage covering ILA Berlin, combining on-site reporting with dynamic music-driven footage of aircraft, defence systems, and the overall exhibition atmosphere.</p>
+        <span class="meta">ROLE — Camera · Direction · Editing</span>
+        <a class="watch" href="https://1drv.ms/v/c/5fc46a9fe5ba49d7/IQAJUZXiljevS6a1l9bT09xFAdYkYv9c4sLNV6uJ-u1b9UM?e=qMAgbS" target="_blank" rel="noopener">Watch</a>
+      </div>
+      <div class="frame">
+        <div class="tc">Documentary / Editing Project</div>
+        <h3>Fishing on the Boat — Documentary Edit</h3>
+        <p>20-minute documentary-style film created from supplied footage, combining interviews, fishing sequences, music, and product-focused storytelling for a fishing equipment brand.</p>
+        <span class="meta">ROLE — Editing · Story Structure · Music &amp; Sound · Color Grading</span>
+        <a class="watch" href="https://1drv.ms/v/c/5fc46a9fe5ba49d7/IQBj2fNRKEd-TLzK5i1FrB1iAW7jyNabC92x3UZc4sum-n4?e=eBPh1i" target="_blank" rel="noopener">Watch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="events">
+    <div class="section-head"><span class="frame-no">004</span><h2>Events &amp; On-Site Production</h2></div>
+    <p class="section-note">Event planning and coverage combining interviews, live atmosphere, presenter-led reporting, and fast-turnaround edits for digital use.</p>
+    <div class="reel-grid">
+      <div class="frame">
+        <div class="tc">Event / Social Media</div>
+        <h3>World Cup Fan Night — Event Report</h3>
+        <p>Short event report capturing the atmosphere of a World Cup match night, combining guest interviews, fan reactions, and music-driven clips throughout the evening.</p>
+        <span class="meta">ROLE — Camera · Direction · Editing</span>
+        <a class="watch" href="https://1drv.ms/v/c/5fc46a9fe5ba49d7/IQCD-6Dher9qQp1cf_jXMAXtAS7MBHpZ9fiFWZ36nzuxdZs?e=UgHS6a" target="_blank" rel="noopener">Watch</a>
+      </div>
+      <div class="frame">
+        <div class="tc">Film Event / Social Media</div>
+        <h3>Summer in Berlin — Street &amp; Music Festival Report</h3>
+        <p>Short summer feature capturing Berlin’s festival atmosphere through music-driven clips, street scenes, and interviews with people around the city.</p>
+        <span class="meta">ROLE — Camera · Direction · Editing</span>
+        <a class="watch" href="https://1drv.ms/v/c/5fc46a9fe5ba49d7/IQBiYRDWJKOxR6oMi4O_pfc9AWpGi51P1aZF0u1EIU-KXvU?e=v5nRYq" target="_blank" rel="noopener">Watch</a>
+      </div>
+      <div class="frame">
+        <div class="tc">Event / Social Media</div>
+        <h3>Doctor’s Day Celebration — Event Production</h3>
+        <p>Planned and produced video coverage for a Doctor’s Day celebration, capturing key moments, guests, and the atmosphere of the event for digital and social media use.</p>
+        <span class="meta">ROLE — Event Planning · Camera · Production · Editing</span>
+        <a class="watch" href="https://1drv.ms/v/c/ef4f54239c16be36/IQAaeU49kWr7T6NM-lnNOl-yAXoxunplm5RgmuGXa38Am04?e=7E6XmO" target="_blank" rel="noopener">Watch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="digital">
+    <div class="section-head"><span class="frame-no">005</span><h2>Teasers &amp; Social Content</h2></div>
+    <p class="section-note">Short-form digital content designed to introduce spaces, institutions, events, and experiences quickly and clearly.</p>
+    <div class="reel-grid">
+      <div class="frame">
+        <div class="tc">Teaser / Social Media</div>
+        <h3>KUMS Health Studio — 1-Minute Teaser</h3>
+        <p>One-minute promotional teaser introducing the KUMS Health Studio, combining dynamic visuals of the studio environment with concise highlights of its purpose and activities.</p>
+        <span class="meta">ROLE — Concept · Camera · Direction · Editing</span>
+        <a class="watch" href="https://1drv.ms/v/c/ef4f54239c16be36/IQDDTltugqqfQJcRiOjpAH4KAUt8i7vgK9Ok6w5xkDo3ZgA?e=Swuuyk" target="_blank" rel="noopener">Watch</a>
+      </div>
+      <div class="frame">
+        <div class="tc">Teaser / Social Media</div>
+        <h3>Language Institute Introduction — 40-Second Teaser</h3>
+        <p>Short promotional teaser featuring a presenter introducing the language institute, supported by dynamic visuals of the space and its learning environment.</p>
+        <span class="meta">ROLE — Concept · Camera · Editing</span>
+        <a class="watch" href="https://1drv.ms/v/c/ef4f54239c16be36/IQBbZrqx0ElETp5LvfIBgzIZAUvbFAal3jUvIZgkqx5__yE?e=eSVwFU" target="_blank" rel="noopener">Watch</a>
+      </div>
+      <div class="frame">
+        <div class="tc">Music Video</div>
+        <h3>Playback Music Video</h3>
+        <p>Lip-sync music video produced for social platforms, conceived, shot, and delivered in a single day.</p>
+        <span class="meta">ROLE — Full self-production</span>
+        <a class="watch" href="https://1drv.ms/v/c/5fc46a9fe5ba49d7/IQDXSbrln2rEIIBf7SABAAAAAR_AUxsKisC8WCz6LaZB_j4?e=YCdq1F" target="_blank" rel="noopener">Watch</a>
+      </div>
+      <div class="frame">
+        <div class="tc">Teaser / Social Media</div>
+        <h3>Restaurant Teaser</h3>
+        <p>Short promotional teaser showcasing a restaurant through dynamic, music-driven visuals designed for digital and social media use.</p>
+        <span class="meta">ROLE — Camera · Direction · Editing</span>
+        <a class="watch" href="https://1drv.ms/v/c/5fc46a9fe5ba49d7/IQDXSbrln2rEIIBfyyIAAAAAARrq5Jv0MoeGtOvCHP-gAkA?e=FtkV0z" target="_blank" rel="noopener">Watch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="branded">
+    <div class="section-head"><span class="frame-no">006</span><h2>Branded &amp; Creative Work</h2></div>
+    <p class="section-note">Product communication and creative productions combining presentation, visual storytelling, animation, and music-led editing.</p>
+    <div class="reel-grid">
+      <div class="frame">
+        <div class="tc">Product Video / Branded Content</div>
+        <h3>Samsung Soundbar — Product Presentation Video</h3>
+        <p>Promotional video introducing a Samsung soundbar, combining on-camera product presentation with 3D animation to explain key features and demonstrate how the device works.</p>
+        <span class="meta">ROLE — Presenter · Concept · Direction · Editing</span>
+        <a class="watch" href="https://1drv.ms/v/c/ef4f54239c16be36/IQDdSvpuQDtCSaONW3vzQWvsAeM0Am4nG2Unl4wjyKvQ9Bg?e=CNig3I" target="_blank" rel="noopener">Watch</a>
+      </div>
+      <div class="frame">
+        <div class="tc">Music Video</div>
+        <span class="award-badge">Best Film Award 2020 · International Festival Recognition</span>
+        <h3>“Night Nurse” — Healthcare Tribute</h3>
+        <p>Artistic tribute to nurses during the COVID-19 pandemic, using emotional and symbolic imagery centered on medical staff. Winner of the Best Film Award 2020, with recognition at the 6th India Science Film Festival in Mumbai and the 9th HAK-IS Short Film Festival in Ankara.</p>
+        <span class="meta">ROLE — Direction · Script · Concept</span>
+        <a class="watch" href="https://1drv.ms/v/c/5fc46a9fe5ba49d7/IQDXSbrln2rEIIBfHa8AAAAAAZuiDK_lSRG-jhkgel9GTn0?e=TPxJfX" target="_blank" rel="noopener">Watch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="frame-no">007</span><h2>Skills &amp; Equipment</h2></div>
+    <div class="skills-cols">
+      <div>
+        <h4>Software</h4>
+        <ul>
+          <li>Adobe Premiere Pro</li>
+          <li>Adobe After Effects</li>
+          <li>DaVinci Resolve</li>
+          <li>Adobe Photoshop</li>
+          <li>Adobe Lightroom</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Production &amp; Digital</h4>
+        <ul>
+          <li>Video production planning</li>
+          <li>Event &amp; conference production</li>
+          <li>YouTube &amp; social media content</li>
+          <li>Cinematography &amp; directing</li>
+          <li>Editing, color grading &amp; sound</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Camera &amp; Studio</h4>
+        <ul>
+          <li>DSLR — Canon, Nikon, Sony</li>
+          <li>Cinema — Blackmagic, Sony FX series</li>
+          <li>DJI Ronin gimbals &amp; stabilizers</li>
+          <li>Studio &amp; mobile lighting</li>
+          <li>Shotgun &amp; lavalier microphones</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Languages</h4>
+        <ul>
+          <li>Persian — Native</li>
+          <li>Kurdish — Native</li>
+          <li>English — B2</li>
+          <li>German — B2</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="sprockets"></div>
+<footer>
+  <div class="eyebrow">Get in touch</div>
+  <h1 style="font-size:clamp(1.8rem,4vw,2.6rem);">Let's make something.</h1>
+  <div class="contact">
+    <a href="mailto:ashkan.hatami.ad@gmail.com">ashkan.hatami.ad@gmail.com</a>
+    <a href="tel:+4917683240220">+49 176 8324 0220</a>
+  </div>
+  <div class="copyright">© Ashkan Hatami — Berlin, Germany</div>
+</footer>
+
+</body>
+</html>
